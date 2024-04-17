@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "htmlslacker"
+name = "html-slacker"
 version = "1.0.0"
 description = "Converts HTML to Slack formatted markdown"
 authors = ["Gohar Iqbal <gohar@mosaicventures.com>"]
