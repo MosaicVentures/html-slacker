@@ -1,9 +1,5 @@
-try:
-    from html.parser import HTMLParser
-    from html.entities import name2codepoint
-except ImportError:
-    from HTMLParser import HTMLParser
-    from htmlentitydefs import name2codepoint
+from html.parser import HTMLParser
+from html.entities import name2codepoint
 import re
 
 LINEBR = "::LINEBR::"
@@ -63,11 +59,13 @@ class HTMLSlacker(HTMLParser):
             self.skip = True
         if tag == 'ul':
             self.isProcessingList = True
+            self.output += LINEBR
         if tag == 'li' and self.isProcessingList:
             self.output += '• '
         if tag == 'ol':
             self.orderedNumber = 1
             self.isProcessingOrderedList = True
+            self.output += LINEBR
         if tag == 'li' and self.isProcessingOrderedList:
             self.output += '{}. '.format(self.orderedNumber)
             self.orderedNumber = self.orderedNumber + 1
@@ -112,14 +110,14 @@ class HTMLSlacker(HTMLParser):
         pass
 
     def handle_entityref(self, name):
-        c = chr(name2codepoint[name])
+        chr(name2codepoint[name])
         pass
 
     def handle_charref(self, name):
         if name.startswith('x'):
-            c = chr(int(name[1:], 16))
+            chr(int(name[1:], 16))
         else:
-            c = chr(int(name))
+            chr(int(name))
 
     def handle_decl(self, data):
         pass
@@ -128,7 +126,7 @@ class HTMLSlacker(HTMLParser):
         """
         substitute multiple whitespace with single whitespace
 
-        link: https://stackoverflow.com/questions/2077897/substitute-multiple-whitespace-with-single-whitespace-in-python
+        link: https://stackoverflow.com/questions/2077897/substitute-multiple-whitespace-with-single-whitespace-in-python # noqa
         :return:
         """
         output = self.output

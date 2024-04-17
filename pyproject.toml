@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "htmlslacker"
+version = "1.0.0"
+description = "Converts HTML to Slack formatted markdown"
+authors = ["Gohar Iqbal <gohar@mosaicventures.com>"]
+license = "MIT"
+readme = "README.rst"
+packages = [{include = "htmlslacker"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.1.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

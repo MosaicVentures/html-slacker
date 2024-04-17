@@ -1,1 +1,1 @@
-from .htmlslacker import HTMLSlacker
+from .htmlslacker import HTMLSlacker # noqa
